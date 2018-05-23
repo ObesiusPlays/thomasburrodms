@@ -1,0 +1,56 @@
+-- /Roll Hogwarts
+-- Locais
+
+local nh = tonumber(arg[1]);
+local bonus = tonumber(arg[2]);
+local pena = tonumber(arg[3]);
+
+-- Caixas
+if nh==nil then
+  nh = inputQuery("Coloque seu Nível de Habilidade: NH");
+end
+if  
+  bonus == inputQuery("Coloque seu Bonus nessa rolagem - Se tiver algum","0","true") then ;
+end
+if  
+  pena == inputQuery("Coloque sua Penalidade nessa rolagem - Se tiver alguma","0","true") then ;
+end
+
+-- Somagens
+
+nhfinal = nh + bonus - pena 
+dificuldade = nhfinal + 1
+resul = rolar("3d6")
+dife = nhfinal - resul
+dife2 = resul - nhfinal
+resul1 = dife
+resul2 = dife2
+resul3 = resul
+resul4 = nhfinal
+
+
+esperar(1000) -- Se começar a vir muito a frase antes do numero mexer aqui 1 Segundo de espera = 1000 
+-- Resultado
+if resul1 >=10 then
+					enviar("[§K23]:star: Sucesso Decisivo!! :star: [§K15] [Margem de Sucesso] =[§K23] " .. dife .." :awyeahh: [§K1]NH="..nh.."(+"..bonus..")(-"..pena..")= ["..nhfinal.."] ");
+					
+				elseif resul2 >=10 then
+					enviar("[§K4] Falha Critica!![§K15] [Margem de Falha] =[§K4] " .. dife2 .." :rage:[§K1]NH="..nh.."(+"..bonus..")(-"..pena..")= ["..nhfinal.."] ");
+					
+				elseif resul3 <=4 then
+					enviar("[§K23]:star: Sucesso Decisivo!! :star: [§K15] [Margem de Sucesso] =[§K23] " .. dife .." :awyeahh: [§K1]NH="..nh.."(+"..bonus..")(-"..pena..")= ["..nhfinal.."] ");
+					
+				elseif resul3 ==18 then
+					enviar("[§K4]Falha Critica!![§K15] [Margem de Falha] =[§K4] " .. dife2 .." :wtf: [§K1]NH="..nh.."[+"..bonus.."][-"..pena.."]= ["..nhfinal.."] ");
+					
+				elseif resul3 ==17 and 
+				 nhfinal <=15 then
+					enviar("[§K4]Falha Critica!![§K15] [Margem de Falha] =[§K4]" .. dife2 .." :rageface: [§K1]NH="..nh.."[+"..bonus.."][-"..pena.."]= ["..nhfinal.."] ");					
+					
+				elseif resul >= dificuldade then
+					enviar("[§K7]Falhou!![§K15][§K15] [Margem de Falha] =[§K2] " .. dife2 .." [§K14]NH="..nh.."[+"..bonus.."][-"..pena.."=[§K7] ["..nhfinal.."] ");
+					
+				elseif resul <= dificuldade then
+					enviar("[§K9]Sucesso!![§K15] [Margem de Sucesso] =[§K3] " .. dife .." [§K14][NH="..nh.." [+"..bonus.."] [-"..pena.."]=[§K9] ["..nhfinal.."] ");
+
+end
